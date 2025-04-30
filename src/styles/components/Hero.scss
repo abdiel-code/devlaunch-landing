@@ -1,0 +1,89 @@
+@import '../variables';
+
+.hero {
+  background: $bg-dark;
+  color: $text-light;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column; // Mobile first (imagen abajo)
+  align-items: center;
+  gap: 2rem;
+
+  box-shadow: 0 0 0 2px $neon-cyan;
+
+  &-content {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    
+    h1 {
+      font-size: 2rem;
+      text-shadow: 0 0 10px rgba($neon-magenta, 0.3);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &-image {
+    width: 100%;
+    max-width: 500px;
+    
+    img {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid $neon-cyan;
+      box-shadow: 0 0 20px rgba($neon-cyan, 0.4);
+    }
+  }
+}
+
+// Desktop version
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 3rem;
+
+    &-content {
+      text-align: left;
+      width: 50%;
+
+      h1 {
+        font-size: 2.5rem; 
+      }
+    }
+
+    &-image {
+      width: 40%;
+      margin-top: 0;
+    }
+  }
+}
+
+.cta-button {
+  background: transparent;
+  color: $neon-cyan;
+  border: 2px solid $neon-cyan;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+  border-radius: 4px;
+
+  &:hover {
+    background: $neon-cyan;
+    color: $bg-dark;
+    box-shadow: 0 0 15px $neon-cyan;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
