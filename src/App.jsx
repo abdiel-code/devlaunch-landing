@@ -8,6 +8,7 @@ import '../src/styles/app.scss'
 import Features from './components/sections/Features'
 import ContactForm from './components/sections/ContactForm'
 import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Hero></Hero>
       <Features></Features>
       <ContactForm></ContactForm>
+      <Footer></Footer>
     </>
 
   );}
