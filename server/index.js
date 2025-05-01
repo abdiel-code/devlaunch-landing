@@ -1,14 +1,13 @@
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: './.env' });
 import express from 'express';
 import cors from 'cors';
 import apiRouter from './routes/api.js';
 
 const app = express();
-console.log(process.env.GMAIL_USER)
 
 app.use(cors({
-  origin: 'http://localhost:3030',
+  origin: `http://localhost:${process.env.PORT2}`,
   methods: ['POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type']
 }));
@@ -23,7 +22,4 @@ app.options('*', (req, res) => {
 });
 
 const PORT = 3001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log('CORS configured for:', 'http://localhost:3030');
-});
+app.listen(PORT, () => {});

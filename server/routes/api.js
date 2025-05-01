@@ -1,6 +1,7 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: './.env' });
 import express from 'express';
 import nodemailer from 'nodemailer';
-import 'dotenv/config';
 
 const router = express.Router();
 
@@ -8,7 +9,7 @@ const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
     user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS,
+    pass: process.env.GMAIL_PASS
   }
 });
 
