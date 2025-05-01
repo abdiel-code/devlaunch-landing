@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCode, FaServer, FaMobileAlt, FaRobot } from 'react-icons/fa';
+import { FaCode, FaServer, FaMobileAlt, FaRobot, FaPaintBrush, FaBolt } from 'react-icons/fa';
 import '../../styles/components/Features.scss';
 import { motion } from "framer-motion";
 
@@ -8,7 +8,7 @@ const Features = () => {
         {
             icon: <FaCode className="feature-icon" />,
             title: "Frontend Development",
-            desc: "React, Vite, Tailwind. Fast and accessible interfaces"
+            desc: "React, Vite, HTML, SCSS. Fast and accessible interfaces"
         },
         {
             icon: <FaServer className="feature-icon" />,
@@ -19,11 +19,26 @@ const Features = () => {
             icon: <FaMobileAlt className="feature-icon" />,
             title: "Mobile Responsive Apps",
             desc: "Adaptive designs for all devices."
+        },
+        {
+            icon: <FaRobot className="feature-icon" />,
+            title: "Interactive Animations",
+            desc: "Framer Motion for smooth and engaging animations."
+        },
+        {
+            icon: <FaPaintBrush className="feature-icon" />,
+            title: "Custom Styling",
+            desc: "SCSS for modular and maintainable styles."
+        },
+        {
+            icon: <FaBolt className="feature-icon" />,
+            title: "Fast Development",
+            desc: "Vite for lightning-fast builds and hot module replacement."
         }
     ];
 
     return (
-        <section className="features">
+        <section className="features" id="Features">
             <h2 className="section-title">Our Tech Expertise</h2>
             <div className="features-grid">
                 {features.map((feature, index) => (

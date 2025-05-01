@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './.env' });
 import express from 'express';
 import nodemailer from 'nodemailer';
+import { body, validationResult } from 'express-validator';
 
 const router = express.Router();
 
@@ -13,7 +14,20 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-router.post('/contact', async (req, res) => {
+router.post('/contact', 
+  [
+    // Validation rules
+    body('name').trim().notEmpty().withMessage('Name is required').escape(),
+    body('email').isEmail().withMessage('Invalid email address').normalizeEmail(),
+    body('message').trim().notEmpty().withMessage('Message is required').escape()
+  ],
+  async (req, res) => {
+    // Check for validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
   try {
     const { name, email, message } = req.body;
     

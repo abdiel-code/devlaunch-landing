@@ -1,36 +1,67 @@
 import React from "react";
 import '../../styles/components/Header.scss';
 import { FaHome, FaStar, FaEnvelope, FaPhone } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 const Header = () => {
     return (
         <header className="header">
-            <h1 className="header-title">Land Page</h1>
             <div className="header-content">
-                <div className="logo-container"></div>
                 <nav className="header-nav-container">
                     <ul className="header-nav">
                         <li>
-                            <FaHome className="nav-icon" />
-                            <a href="#Hero" className="hover:underline">Home</a>
+                            
+                            <Link
+                                to="Hero"
+                                smooth={true}
+                                duration={500}
+                                className="hover:underline"
+                            >
+                                <FaHome className="nav-icon" />
+                                Home
+                            </Link>
                         </li>
                         <li>
-                            <FaStar className="nav-icon" />
-                            <a href="#Features" className="hover:underline">Features</a>
+                            
+                            <Link
+                                to="Features"
+                                smooth={true}
+                                duration={500}
+                                className="hover:underline"
+                            >
+                                <FaStar className="nav-icon" />
+                                Features
+                            </Link>
                         </li>
                         <li>
-                            <FaEnvelope className="nav-icon" />
-                            <a href="#Form" className="hover:underline">Get in touch</a>
+                            
+                            <Link
+                                to="Form"
+                                smooth={true}
+                                duration={500}
+                                className="hover:underline"
+                            >
+                                <FaEnvelope className="nav-icon" />
+                                Get in touch
+                            </Link>
                         </li>
                         <li>
-                            <FaPhone className="nav-icon" />
-                            <a href="#Footer" className="hover:underline">Contact</a>
+                            
+                            <Link
+                                to="Contact"
+                                smooth={true}
+                                duration={500}
+                                className="hover:underline"
+                            >
+                                <FaPhone className="nav-icon" />
+                                Contact
+                            </Link>
                         </li>
                     </ul>
                 </nav>
             </div>
         </header>
     );
-}
+};
 
 export default Header;

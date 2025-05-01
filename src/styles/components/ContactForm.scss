@@ -1,6 +1,7 @@
 @import '../variables';
 
 .contact-section {
+  font-family: $font-secondary;
   padding: 4rem 2rem;
   background: lighten($bg-dark, 5%);
   color: $text-light;

@@ -2,9 +2,13 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './.env' });
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import apiRouter from './routes/api.js';
 
+
 const app = express();
+
+app.use(helmet());
 
 app.use(cors({
   origin: `http://localhost:${process.env.PORT2}`,

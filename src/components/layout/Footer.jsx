@@ -4,7 +4,7 @@ import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        <footer className="footer" id="Contact">
             <h2 className="footer-title">Contact Me</h2>
             <div className="footer-links">
                 <a href="mailto:abdieljflores.dev@gmail.com" className="footer-link" target="_blank" rel="noopener noreferrer">

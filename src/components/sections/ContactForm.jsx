@@ -64,7 +64,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="contact-section">
+    <section id="Form" className="contact-section">
       <h2 className="section-title">Get in Touch</h2>
       {submitSuccess ? (
         <div className="success-message">

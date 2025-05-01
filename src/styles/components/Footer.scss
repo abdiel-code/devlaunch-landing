@@ -1,6 +1,8 @@
 @import "../variables";
 
 .footer {
+    font-family: $font-secondary;
+    border-top: $neon-cyan 2px solid;
     background-color: $bg-dark;
     color: $text-light;
     text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
