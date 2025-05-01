@@ -1,0 +1,106 @@
+@import '../variables';
+
+.contact-section {
+  padding: 4rem 2rem;
+  background: lighten($bg-dark, 5%);
+  color: $text-light;
+  border-top: 1px solid $neon-cyan;
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: $neon-cyan;
+    text-shadow: 0 0 8px rgba($neon-cyan, 0.5);
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .input-icon {
+      color: $neon-magenta;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba($bg-dark, 0.7);
+      border: 1px solid $neon-cyan;
+      border-radius: 4px;
+      color: $text-light;
+      font-family: inherit;
+      transition: all 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: $neon-magenta;
+        box-shadow: 0 0 10px rgba($neon-magenta, 0.3);
+      }
+
+      &::placeholder {
+        color: rgba($text-light, 0.5);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    &.error {
+      input, textarea {
+        border-color: #ff4d4d;
+      }
+    }
+
+    .error-message {
+      display: block;
+      color: #ff4d4d;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+  }
+
+  .submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 1rem;
+
+    &:hover {
+      background: $neon-magenta;
+      border-color: $neon-magenta;
+    }
+  }
+
+  .success-message {
+    text-align: center;
+    padding: 2rem;
+    background: rgba($neon-cyan, 0.1);
+    border: 1px solid $neon-cyan;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+
+    h3 {
+      color: $neon-magenta;
+      margin-bottom: 1rem;
+    }
+  }
+}
