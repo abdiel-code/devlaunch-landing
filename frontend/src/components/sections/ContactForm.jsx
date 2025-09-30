@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { FaPaperPlane, FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
-import '../../styles/components/ContactForm.scss';
+import React, { useState } from "react";
+import { FaPaperPlane, FaUser, FaEnvelope, FaComment } from "react-icons/fa";
+import "../../styles/components/ContactForm.scss";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -15,18 +15,18 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.name) newErrors.name = 'Name is required';
+    if (!formData.name) newErrors.name = "Name is required";
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
-    if (!formData.message) newErrors.message = 'Message is required';
+    if (!formData.message) newErrors.message = "Message is required";
     return newErrors;
   };
 
@@ -39,22 +39,25 @@ const ContactForm = () => {
     }
 
     setIsSubmitting(true);
-    
+
     try {
-      const response = await fetch('http://localhost:3001/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://devlaunch-landing.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Something went wrong');
-      
+      if (!response.ok) throw new Error(data.message || "Something went wrong");
+
       setSubmitSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("Error", error);
       alert(`Error: ${error.message}`);
@@ -73,7 +76,7 @@ const ContactForm = () => {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="contact-form">
-          <div className={`form-group ${errors.name ? 'error' : ''}`}>
+          <div className={`form-group ${errors.name ? "error" : ""}`}>
             <label htmlFor="name">
               <FaUser className="input-icon" /> Name
             </label>
@@ -85,10 +88,12 @@ const ContactForm = () => {
               onChange={handleChange}
               placeholder="Your name"
             />
-            {errors.name && <span className="error-message">{errors.name}</span>}
+            {errors.name && (
+              <span className="error-message">{errors.name}</span>
+            )}
           </div>
 
-          <div className={`form-group ${errors.email ? 'error' : ''}`}>
+          <div className={`form-group ${errors.email ? "error" : ""}`}>
             <label htmlFor="email">
               <FaEnvelope className="input-icon" /> Email
             </label>
@@ -100,10 +105,12 @@ const ContactForm = () => {
               onChange={handleChange}
               placeholder="your@email.com"
             />
-            {errors.email && <span className="error-message">{errors.email}</span>}
+            {errors.email && (
+              <span className="error-message">{errors.email}</span>
+            )}
           </div>
 
-          <div className={`form-group ${errors.message ? 'error' : ''}`}>
+          <div className={`form-group ${errors.message ? "error" : ""}`}>
             <label htmlFor="message">
               <FaComment className="input-icon" /> Message
             </label>
@@ -115,11 +122,19 @@ const ContactForm = () => {
               rows="5"
               placeholder="Tell me about your project..."
             ></textarea>
-            {errors.message && <span className="error-message">{errors.message}</span>}
+            {errors.message && (
+              <span className="error-message">{errors.message}</span>
+            )}
           </div>
 
-          <button type="submit" disabled={isSubmitting} className="cta-button submit-btn">
-            {isSubmitting ? 'Sending...' : (
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="cta-button submit-btn"
+          >
+            {isSubmitting ? (
+              "Sending..."
+            ) : (
               <>
                 <FaPaperPlane className="btn-icon" /> Send Message
               </>
