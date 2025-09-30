@@ -1,20 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config({ path: "./.env" });
 import express from "express";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { body, validationResult } from "express-validator";
 
 const router = express.Router();
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 router.post(
   "/contact",
@@ -45,9 +36,10 @@ router.post(
         return res.status(400).json({ error: "All fields are required" });
       }
 
-      await transporter.sendMail({
-        from: '"Portfolio Contact" <no-reply@devlaunch.com>',
+      await resend.emails.send({
+        from: "onboarding@resend.dev",
         to: "abdieljflores.dev@gmail.com",
+        reply_to: email,
         subject: `New message from ${name}`,
         html: `
         <h2>New Contact Form Submission</h2>
