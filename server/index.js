@@ -1,29 +1,19 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: './.env' });
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import apiRouter from './routes/api.js';
-
+import dotenv from "dotenv";
+dotenv.config({ path: "./.env" });
+import express from "express";
+import helmet from "helmet";
+import apiRouter from "./routes/api.js";
+import corsMiddleware from "./middleware/corsMiddleware.js";
 
 const app = express();
 
 app.use(helmet());
-
-app.use(cors({
-  origin: `http://localhost:${process.env.PORT2}`,
-  methods: ['POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type']
-}));
+app.use(corsMiddleware);
 
 app.use(express.json());
-app.use('/api', apiRouter);
+app.use("/api", apiRouter);
 
-app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.status(204).end();
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
-const PORT = 3001;
-app.listen(PORT, () => {});
